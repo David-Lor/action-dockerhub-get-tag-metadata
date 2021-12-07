@@ -1,0 +1,25 @@
+{
+  "name": "action-dockerhub-fetch-tags",
+  "version": "1.0.0",
+  "description": "Github Action for fetching the available tags of a certain Docker image (including the SHA digests), from the DockerHub public registry.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-Lor/github-action-dockerhub-fetch-tags.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/David-Lor/github-action-dockerhub-fetch-tags/issues"
+  },
+  "homepage": "https://github.com/David-Lor/github-action-dockerhub-fetch-tags#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "got": "^11.8.3"
+  }
+}
