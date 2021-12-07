@@ -23,6 +23,21 @@ The API endpoint used for fetching the metadata is (with the example of the offi
     - `tagMetadata` is the whole object for a certain tag (e.g. `python:slim-buster`). This includes an array of images, being each image a variant for a certain os and architecture
     - `finalImageMetadata` is the whole object for a concrete image of the found tag, matching the input os and architecture. This object is filtered out from the array of images found on the "tagMetadata" object
 
+### Example
+
+An example of the usage can be found on the [test workflow](.github/workflows/test.yaml). A simplified example of how the Action is declared would be the following:
+
+```yaml
+name: Fetch image metadata
+id: metadata
+uses: David-Lor/action-dockerhub-get-tag-metadata@0.0.1
+with:
+  image: debian:slim-buster
+  os: linux
+  architecture: arm/v7
+  pageLimit: 5
+```
+
 ## TODO
 
 - Compress node_modules
