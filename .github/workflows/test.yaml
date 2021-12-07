@@ -1,0 +1,51 @@
+name: "Test Action"
+
+on:
+  workflow_dispatch: {}  # TODO Workflow dispatch with custom inputs used as Action inputs
+  push: {}
+  schedule:
+    - cron: "0 3 * * *"  # Daily, 3:00 AM
+
+jobs:
+  test:
+    name: "Test"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - image: "python:slim-buster"
+          - image: "python:slim-buster"
+            os: "linux"
+            architecture: "arm64/v8"
+          - image: "python:3.8-alpine3.13"
+            architecture: "ppc64le"
+          - image: "linuxserver/qbittorrent"
+            architecture: "amd64"
+          - image: "linuxserver/qbittorrent:20.04.1"
+            architecture: "arm/v7"
+          - image: "library/docker:windowsservercore"
+            os: "windows"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+      - name: "Fetch image metadata"
+        id: "metadata"
+        # TODO use public action reference for schedule runs
+        #uses: David-Lor/action-dockerhub-get-tag-metadata@latest
+        uses: ./
+        with:
+          image: ${{ matrix.image.image }}
+          os: ${{ matrix.image.os }}
+          architecture: ${{ matrix.image.architecture }}
+      # TODO Add a failing-on-purpose test (create a script for testing)
+      - name: "Test: output digest starts with \"sha256:\""
+        run: |-
+          [[ "${{ steps.metadata.outputs.digest }}" = sha256:* ]]
+      - name: "Test: output digest length"
+        run: |-
+          digest="${{ steps.metadata.outputs.digest }}"
+          length=${#digest}
+          test $length -eq 71
