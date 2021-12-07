@@ -22,3 +22,7 @@ The API endpoint used for fetching the metadata is (with the example of the offi
 - Full JSON outputs from the API: these are categorized in two outputs:
     - `tagMetadata` is the whole object for a certain tag (e.g. `python:slim-buster`). This includes an array of images, being each image a variant for a certain os and architecture
     - `finalImageMetadata` is the whole object for a concrete image of the found tag, matching the input os and architecture. This object is filtered out from the array of images found on the "tagMetadata" object
+
+## TODO
+
+- Compress node_modules
