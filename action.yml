@@ -1,0 +1,33 @@
+name: 'DockerHub Fetch Tag Metadata'
+description: 'Fetch the metadata of a certain Docker image-tag (including the SHA digests), from the DockerHub public registry'
+
+inputs:
+  image:
+    description: 'Full image name to find, with format author/image:tag, or image:tag for official images'
+    required: true
+  os:
+    description: 'Image OS to find'
+    required: true
+    default: ''
+  architecture:
+    description: 'Image architecture to find'
+    required: true
+    default: ''
+  pageLimit:
+    description: 'How many pages of results to parse until giving up'
+    required: true
+    default: ''
+
+outputs:
+  digest:
+    description: 'Image digest'
+  size:
+    description: 'Image size in bytes'
+  tagMetadata:
+    description: 'Full JSON output of the found image-tag metadata (as read from Docker Registry API)'
+  finalImageMetadata:
+    description: 'Full JSON output of the found final image metadata, for the OS and architecture specified (as read from Docker Registry API)'
+
+runs:
+  using: 'node12'
+  main: 'src/index.js'
