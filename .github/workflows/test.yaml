@@ -34,7 +34,7 @@ jobs:
       - name: "Fetch image metadata"
         id: "metadata"
         # TODO use public action reference for schedule runs
-        #uses: David-Lor/action-dockerhub-get-tag-metadata@latest
+        #uses: David-Lor/action-dockerhub-get-tag-metadata@0.0.1
         uses: ./
         with:
           image: ${{ matrix.image.image }}
