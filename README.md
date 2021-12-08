@@ -31,7 +31,7 @@ An example of the usage can be found on the [test workflow](.github/workflows/te
 steps:
 - name: Fetch image metadata
   id: metadata
-  uses: David-Lor/action-dockerhub-get-tag-metadata@0.0.1
+  uses: David-Lor/action-dockerhub-get-tag-metadata@0.1.1
   with:
     image: debian:slim-buster
     os: linux
