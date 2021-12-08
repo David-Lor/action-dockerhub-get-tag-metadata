@@ -1,22 +1,22 @@
 {
-  "name": "action-dockerhub-fetch-tags",
-  "version": "1.0.0",
-  "description": "Github Action for fetching the available tags of a certain Docker image (including the SHA digests), from the DockerHub public registry.",
+  "name": "action-dockerhub-get-tag-metadata",
+  "version": "0.0.1",
+  "description": "Github Action for fetching the information of a certain Docker image and tag (including the SHA digest) from the DockerHub public registry.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/David-Lor/github-action-dockerhub-fetch-tags.git"
+    "url": "git+https://github.com/David-Lor/action-dockerhub-get-tag-metadata.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["github", "docker", "docker-hub", "dockerhub", "github-actions", "github-action", "github-action-docker", "github-action-javascript"],
+  "author": "https://github.com/David-Lor",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/David-Lor/github-action-dockerhub-fetch-tags/issues"
+    "url": "https://github.com/David-Lor/action-dockerhub-get-tag-metadata/issues"
   },
-  "homepage": "https://github.com/David-Lor/github-action-dockerhub-fetch-tags#readme",
+  "homepage": "https://github.com/David-Lor/action-dockerhub-get-tag-metadata#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
