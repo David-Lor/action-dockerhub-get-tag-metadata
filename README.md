@@ -28,14 +28,22 @@ The API endpoint used for fetching the metadata is (with the example of the offi
 An example of the usage can be found on the [test workflow](.github/workflows/test.yaml). A simplified example of how the Action is declared would be the following:
 
 ```yaml
-name: Fetch image metadata
-id: metadata
-uses: David-Lor/action-dockerhub-get-tag-metadata@0.0.1
-with:
-  image: debian:slim-buster
-  os: linux
-  architecture: arm/v7
-  pageLimit: 5
+steps:
+- name: Fetch image metadata
+  id: metadata
+  uses: David-Lor/action-dockerhub-get-tag-metadata@0.0.1
+  with:
+    image: debian:slim-buster
+    os: linux
+    architecture: arm/v7
+    pageLimit: 5
+
+- name: Print image metadata
+  run: |
+    echo "Digest: ${{ steps.metadata.outputs.digest }}"
+    echo "Size: ${{ steps.metadata.outputs.size}} bytes"
+    echo "Tag Metadata JSON: ${{ steps.metadata.outputs.tagMetadata }}"
+    echo "Target Image Metadata JSON: ${{ steps.metadata.outputs.finalImageMetadata }}"
 ```
 
 ## TODO
