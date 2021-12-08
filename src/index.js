@@ -54,8 +54,8 @@ function parseImage(imageInput) {
 /**
  * Request tags metadata for a certain image
  */
-async function request(author, image, page) {
-    const url = `https://registry.hub.docker.com/v2/repositories/${author}/${image}/tags?page=${page}`;
+async function request(author, image, tag, page) {
+    const url = `https://registry.hub.docker.com/v2/repositories/${author}/${image}/tags?page=${page}&name=${tag}`;
     console.log(`Requesting ${url} ...`);
     const r = await got(url);
 
@@ -116,7 +116,7 @@ async function fetchImageMetadata(author, image, tag, os, architecture, pageLimi
     let result = null;
 
     while (result === null && page <= pageLimit) {
-        const responseBody = await request(author, image, page);
+        const responseBody = await request(author, image, tag, page);
         result = parseResponse(responseBody, tag, os, architecture);
         page++;
     }
